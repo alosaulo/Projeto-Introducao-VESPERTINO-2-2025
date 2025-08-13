@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -34,22 +35,22 @@ public class PlayerController : MonoBehaviour
         float moveX = 0f; // Inicializa o movimento no eixo X
         float moveY = 0f; // Inicializa o movimento no eixo Y
 
-        if (Input.GetKey(upKey)) 
+        if (Keyboard.current.wKey.isPressed) 
         { 
             moveY = 1f; // Move para cima se a tecla de cima for pressionada
         }
-        else if (Input.GetKey(downKey)) 
+        else if (Keyboard.current.sKey.isPressed) 
         { 
             moveY = -1f; // Move para baixo se a tecla de baixo for pressionada
         }
 
-        if (Input.GetKey(rightKey))
+        if (Keyboard.current.aKey.isPressed)
         {
-            moveX = 1f; // Move para direita se a tecla de direita for pressionada
+            moveX = -1f; // Move para direita se a tecla de direita for pressionada
         }
-        else if (Input.GetKey(leftKey)) 
+        else if (Keyboard.current.dKey.isPressed) 
         { 
-            moveX = -1f; // Move para esquerda se a tecla de esquerda for pressionada
+            moveX = 1f; // Move para esquerda se a tecla de esquerda for pressionada
         }
 
         Vector2 movement = new Vector2(moveX, moveY).normalized; 
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = movement * speed; // Aplica a velocidade ao Rigidbody2D do player
 
-        Debug.Log("Movement: " + movement); // Log do movimento para
+        //Debug.Log("Movement: " + movement); // Log do movimento para
                                             // depuração
     }
 }
