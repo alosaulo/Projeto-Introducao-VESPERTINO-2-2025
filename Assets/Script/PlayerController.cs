@@ -66,4 +66,13 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Movement: " + movement); // Log do movimento para
                                             // depuração
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Tiro") 
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
 }
